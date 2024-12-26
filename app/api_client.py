@@ -20,10 +20,11 @@ def get_user_activity_description(image: Image.Image, user_id: int, secret_key: 
                     "image_base64": img_str,
                     "user_secret_key": secret_key,
                 },
+                timeout=30.0,
             )
             logger.debug(f"Response status: {response.status_code}")
             logger.debug(f"Response content: {response.text}")
-            
+
             response.raise_for_status()
             
             try:
