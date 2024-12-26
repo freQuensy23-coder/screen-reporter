@@ -30,7 +30,16 @@ def login(user_id: int, secret_key: str) -> bool:
     return response.status_code == 200
 
 
+def signal_handler(signum, frame):
+    logger.info("Received signal to terminate")
+    sys.exit(0)
+
+
 def run_daemon():
+    # Регистрируем обработчики сигналов
+    signal.signal(signal.SIGTERM, signal_handler)
+    signal.signal(signal.SIGINT, signal_handler)
+    
     logger.info("Activity tracker daemon started")
 
     # Получаем или создаем учетные данные
@@ -59,4 +68,8 @@ def run_daemon():
 
 
 if __name__ == "__main__":
-    run_daemon()
+    try:
+        run_daemon()
+    except KeyboardInterrupt:
+        logger.info("Shutting down...")
+        sys.exit(0)

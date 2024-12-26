@@ -12,6 +12,6 @@ dependencies = [
     "openrouter>=1.0",
     "pandas>=2.2.3",
     "pillow>=11.0.0",
+    "py2app>=0.28.8",
     "python-dotenv>=1.0.1",
-    "tqdm>=4.67.1",
 ]
