@@ -1,29 +1,19 @@
 from setuptools import setup
 
-APP = ['daemon.py']
-DATA_FILES = [
-    'prompt.md',
-    'costs.json',
-    '.env'
-]
+APP = ["daemon.py"]
+DATA_FILES = ["prompt.md", "costs.json", ".env"]
 OPTIONS = {
-    'argv_emulation': True,
-    'plist': {
-        'LSUIElement': True,
-        'LSBackgroundOnly': True,
+    "argv_emulation": True,
+    "plist": {
+        "LSUIElement": True,
+        "LSBackgroundOnly": True,
     },
-    'packages': [
-        'openai',
-        'PIL',
-        'tqdm',
-        'python-dotenv',
-        'loguru'
-    ],
+    "packages": ["openai", "PIL", "tqdm", "python-dotenv", "loguru"],
 }
 
 setup(
     app=APP,
     data_files=DATA_FILES,
-    options={'py2app': OPTIONS},
-    setup_requires=['py2app'],
-) 
+    options={"py2app": OPTIONS},
+    setup_requires=["py2app"],
+)

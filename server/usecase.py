@@ -1,4 +1,4 @@
-from .utils import encode_image
+from utils import encode_image
 from models import User, ImageProcessingResult, peewee
 import uuid
 from loguru import logger
@@ -47,8 +47,6 @@ def login(user_id: int, user_key: str) -> Tuple[bool, Optional[str]]:
         logger.error(f"{error_msg}: {str(e)}")
         return False, error_msg
 
-
-@alru_cache(maxsize=256)
 async def process_image(image: Image) -> str:
     response = await client.chat.completions.create(
         model="gpt-4o",

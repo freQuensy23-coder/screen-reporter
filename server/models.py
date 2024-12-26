@@ -35,3 +35,5 @@ class ImageProcessingResult(BaseModel):
 
 def create_tables():
     db.create_tables([User, ImageProcessingResult])
+
+create_tables()
